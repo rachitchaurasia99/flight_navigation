@@ -1,11 +1,8 @@
-const express = require('express')
-const app = express()
-const port = 3000
+import 'dotenv/config';
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+import app from './app.js';
+import runDbMigrations from './db/migrations/index.js';
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+await runDbMigrations();
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
