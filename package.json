@@ -17,6 +17,7 @@
     "globe.gl": "^2.32.4",
     "graph-data-structure": "^3.5.0",
     "http-errors": "~1.6.3",
+    "http-proxy-middleware": "^3.0.0",
     "jade": "~1.11.0",
     "js-priority-queue": "^0.1.5",
     "morgan": "~1.9.1",
