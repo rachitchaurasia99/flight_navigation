@@ -1,10 +1,12 @@
-import db from "../index.js"
+import City from '../../models/city.js'
 
 const runDbMigrations = async ()=>{
   console.log('BEGIN DB MIGRATION');
-
-  // use single client forn transactions
-  const client = await db.connect()
+  const mike = City.create({
+    name: "Delhi",
+    country: 'India',
+  });
+  console.log('END DB MIGRATION');
 }
 
 export default runDbMigrations;
