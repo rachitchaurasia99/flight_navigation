@@ -8,10 +8,7 @@ flightsRouter.get('/fetch-and-store-flights', async (req, res) => {
         const response = await fetch(`http://api.aviationstack.com/v1/flights?access_key=${apikey}`);
         const data = await response.json();
 
-        // Extract relevant data from the API response
         const flights = data.data;
-
-        // Store the data in the database
 
         res.status(200).json(data);
     } catch (error) {

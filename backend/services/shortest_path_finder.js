@@ -3,8 +3,12 @@ import City from '../models/city.js'
 const cities = await City.findAll();
 const rawData = fs.readFileSync('adjacency_list.json');
 import PriorityQueue from 'js-priority-queue';
+// import weather from '../city_weather.json'
+const weatherData = fs.readFileSync('city_weather.json');
 
 const data = JSON.parse(rawData);
+const wData = JSON.parse(weatherData);
+const w = wData.weather;
 const graph = data.adjacencyList
 // console.log(graph)
 
@@ -27,12 +31,11 @@ const graph = data.adjacencyList
         pq.queue([0, S]);
 
         while (pq.length > 0) {
-            // Topmost element of the priority queue is with minimum distance value.
             const [dis, node] = pq.dequeue();
 
             for(const adjNode in adj[String(node)]) {
                 const edW = adj[String(node)][String(adjNode)]
-                if (edW < 7000 && dis + edW < dist[String(adjNode)]) {
+                if (edW < 7000 && w[String(adjNode)] == 'OK' && dis + edW < dist[String(adjNode)]) {
                     dist[String(adjNode)] = dis + edW;
                     pq.queue([dis + edW, String(adjNode)]);
                     parent[String(adjNode)] = String(node);
