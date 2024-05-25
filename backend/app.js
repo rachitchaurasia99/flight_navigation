@@ -7,6 +7,9 @@ import Router from './flights.js';
 import weatherRouter from './flights.js';
 // import d from './services/adjacency_list_generator.js'
 import shortest_path from './services/shortest_path_finder.js'
+import cors from 'cors';
+
+app.use(cors())
 // import weather from './weather.js'
 
 // view engine setup
